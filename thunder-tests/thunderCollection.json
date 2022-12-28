@@ -1,0 +1,13 @@
+[
+  {
+    "_id": "5ce52fb2-c2bc-4581-a081-ed1548cac246",
+    "colName": "multi-tenants-app",
+    "created": "2022-12-28T22:57:41.101Z",
+    "sortNum": 10000,
+    "folders": [],
+    "settings": {
+      "headers": [],
+      "tests": []
+    }
+  }
+]

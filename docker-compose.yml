@@ -1,0 +1,39 @@
+version: '3.4'
+
+volumes:
+  redis_data:
+    driver: local
+
+networks:
+  starlink:
+    driver: bridge
+
+services:
+  mongodb:
+    hostname: mongodb
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./containers-data/mongodb:/data/db
+      # - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      MONGO_INITDB_DATABASE: admin
+    networks:
+      - starlink
+    logging:
+      driver: none
+
+  # mongodb://mongodb:27017/blogdb?ssl=false&authSource=admin
+  mongoclient:
+    image: mongoclient/mongoclient:latest
+    container_name: mongoclient
+    hostname: mongoclient
+    restart: always
+    networks:
+      - starlink
+    ports:
+      - 3300:3000
+    logging:
+      driver: none
